@@ -82,9 +82,9 @@ public class JarvisSmartHomeSpeechlet implements Speechlet {
 
     private SpeechletResponse handleActionRequest(IntentRequest request) {
         Intent intent = request.getIntent();
-        String action = intent.getSlot("Action").getValue();
         String subject = intent.getSlot("Subject").getValue();
-        ActionRequest actionRequest = new ActionRequest(action, subject);
+        String action = intent.getSlot("Action").getValue();
+        ActionRequest actionRequest = new ActionRequest(subject, action);
         Call<ActionResponse> responseCall = jarvisHubService.postActionRequest(actionRequest);
         String speechOutput;
         try {
